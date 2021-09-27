@@ -1,4 +1,5 @@
 import axios from "axios";
+import baseUrl from "./utils/baseUrl";
 
 let storedToken = null;
 
@@ -15,7 +16,7 @@ const getAllBookmarks = async () => {
     }
   };
 
-  const req = await axios.get(`http://localhost:5000/bookmarks/`, config);
+  const req = await axios.get(`${baseUrl}/bookmarks/`, config);
   return req.data.map(bookmark => {
     return {
       ...bookmark,
@@ -33,10 +34,8 @@ const getBookmarksByPostId = async postId => {
     }
   };
 
-  console.log(config);
-
   const req = await axios.get(
-    `http://localhost:5000/bookmarks/post/${postId}`,
+    `${baseUrl}/bookmarks/post/${postId}`,
     config
   );
   return req.data;
@@ -53,7 +52,7 @@ const addBookmark = async commentId => {
 
   const body = { commentId };
 
-  const req = await axios.post("http://localhost:5000/bookmarks", body, config);
+  const req = await axios.post(`${baseUrl}/bookmarks`, body, config);
   return req.data;
 };
 
@@ -62,7 +61,7 @@ const deleteBookmark = commentId => {
     Authorization: storedToken
   };
 
-  axios.delete("http://localhost:5000/bookmarks", {
+  axios.delete(`${baseUrl}/bookmarks`, {
     data: {
       commentId
     },
