@@ -5,6 +5,7 @@ import styled from "styled-components";
 import GroupInfo from "../GroupInfo/GroupInfo";
 import PostList from "../PostList/PostList";
 import GroupActions from "../GroupActions/GroupActions";
+import LoadingMessage from "../LoadingMessage/LoadingMessage";
 
 import NotFound from "../NotFound/NotFound";
 
@@ -130,9 +131,9 @@ export default function SingleGroupView() {
                 searchTerm={searchTerm}
                 posts={postsToDisplay}
               />
-              {postsToDisplay.length === 0 &&
+              {postsToDisplay.length === 0 && (
                 <h3>This group doesn't have any posts. Submit one!</h3>
-              }
+              )}
               {postsToDisplay.length !== 0 && (
                 <Pagination>
                   {currentPage > 1 && (
@@ -168,7 +169,7 @@ export default function SingleGroupView() {
         } else if (badRequest) {
           return <NotFound></NotFound>;
         } else {
-          return <GroupsLoading>Loading</GroupsLoading>;
+          return <LoadingMessage />;
         }
       })()}
     </div>
