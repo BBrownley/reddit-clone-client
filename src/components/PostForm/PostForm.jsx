@@ -66,8 +66,6 @@ const PostForm = () => {
 
     const newPost = await postService.createPost(data);
 
-    console.log(newPost);
-
     if (newPost) {
       // dispatch(addVote(newPost.post_id, 1));
       dispatch(initializePostVotes());

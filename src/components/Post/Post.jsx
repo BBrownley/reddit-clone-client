@@ -31,6 +31,7 @@ import {
 } from "../PostList/PostList.elements";
 
 import { FormContainer, FormField } from "../shared/Form.elements";
+import { StyledFormContainer } from "./Post.elements";
 import ButtonGroup from "../shared/ButtonGroup.elements";
 import FollowButton from "../FollowButton/FollowButton";
 
@@ -146,7 +147,7 @@ const Post = ({ post, options, expand, viewMode }) => {
             />
 
             {editing ? (
-              <FormContainer>
+              <StyledFormContainer>
                 <FormField>
                   <textarea
                     value={editValue}
@@ -159,7 +160,7 @@ const Post = ({ post, options, expand, viewMode }) => {
                   </li>
                   <li onClick={handleCancelEdit}>Cancel</li>
                 </ButtonGroup>
-              </FormContainer>
+              </StyledFormContainer>
             ) : (
               <Content expand={expand}>{postContent}</Content>
             )}

@@ -5,7 +5,7 @@ import { useHistory, Link } from "react-router-dom";
 import { setRedirectPath } from "../../reducers/redirectReducer";
 import { initializeBookmarks } from "../../reducers/userBookmarksReducer";
 
-import { Container } from "./Comments.elements";
+import { Container, StyledFormContainer } from "./Comments.elements";
 import { FormContainer, FormField } from "../shared/Form.elements";
 import ButtonGroup from "../shared/ButtonGroup.elements";
 import FollowButton from "../FollowButton/FollowButton";
@@ -104,7 +104,8 @@ export default function Comments({ postId, submitterId, postTitle }) {
           );
         } else {
           return (
-            <FormContainer className="new-thread">
+            <StyledFormContainer className="new-thread">
+              <h3>Add a comment!</h3>
               <FormField>
                 <textarea
                   value={newComment}
@@ -122,7 +123,7 @@ export default function Comments({ postId, submitterId, postTitle }) {
                   Add comment
                 </li>
               </ButtonGroup>
-            </FormContainer>
+            </StyledFormContainer>
           );
         }
       })()}
