@@ -13,6 +13,7 @@ import { initializePosts } from "../../reducers/postsReducer";
 import { removeNotification } from "../../reducers/notificationReducer";
 import { addPostToUser } from "../../reducers/userReducer";
 import { addVote } from "../../reducers/userPostVotesReducer";
+import { timedToast } from "../../reducers/toastReducer";
 
 import FormWarning from "../FormWarning/FormWarning";
 
@@ -78,6 +79,7 @@ const PostForm = () => {
 
       user = { ...user, userPosts: [...user.userPosts, newPost.postID] };
       localStorage.setItem("loggedUser", JSON.stringify(user));
+      dispatch(timedToast("Post created"));
     }
   };
 

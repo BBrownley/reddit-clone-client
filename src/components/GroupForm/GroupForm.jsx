@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { createGroup } from "../../reducers/groupsReducer";
+import { timedToast } from "../../reducers/toastReducer";
 
 import { FormContainer, FormHeader, FormField } from "../shared/Form.elements";
 import StyledLink from "../shared/NavLink.elements";
@@ -49,6 +50,7 @@ const GroupForm = () => {
     }
 
     history.push(`/groups/${res.group_name}`);
+    dispatch(timedToast("Group created"));
   };
 
   const handleSetGroupName = e => {

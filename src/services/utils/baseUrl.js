@@ -1,5 +1,5 @@
 let baseUrl;
-const production = true;
+const production = false;
 
 if (production) {
   baseUrl = "https://redditto-api.herokuapp.com";
