@@ -47,8 +47,6 @@ export default function MessageView() {
     history.push("/inbox");
   };
 
-  console.log(location.state);
-
   return (
     <Message>
       <h2>{location.state.subject}</h2>
@@ -65,7 +63,7 @@ export default function MessageView() {
         </li>
         {location.state.sender ? (
           <li>
-            <a onClick={() => setReplyOpen(true)}>Reply</a>
+            <span onClick={() => setReplyOpen(true)}>Reply</span>
           </li>
         ) : (
           ""

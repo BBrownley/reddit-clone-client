@@ -82,7 +82,7 @@ const unsubscribe = async group => {
       `${baseUrl}/groups/subscription`,
       {
         data: {
-          id: group.group_id
+          id: group.id
         },
         headers
       }

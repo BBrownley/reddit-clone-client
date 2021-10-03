@@ -27,6 +27,7 @@ export default function GroupCard({ group }) {
   };
 
   const handleUnsubscribe = () => {
+    console.log("unsubbing");
     dispatch(unsubscribeFromGroup(group, loggedUser));
   };
 
