@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const StyledFormContainer = styled(FormContainer)`
-  margin: 4rem auto 2rem 0;
+  margin: 2rem auto 2rem 0;
   h3 {
     font-weight: bold;
     margin-bottom: 0.5rem;

@@ -25,9 +25,7 @@ import {
   VoteButton,
   Content,
   PostOptions,
-  PostScore,
-  CommentCountSm,
-  CommentCountLg
+  PostScore
 } from "../PostList/PostList.elements";
 
 import { FormContainer, FormField } from "../shared/Form.elements";
@@ -177,7 +175,7 @@ const Post = ({ post, options, expand, viewMode }) => {
                   {user && (
                     <span>
                       {userOwnsPost ? (
-                        <ButtonGroup>
+                        <ul className="post-actions">
                           {viewMode && editing === false && (
                             <li onClick={() => setEditing(true)}>Edit</li>
                           )}
@@ -188,7 +186,7 @@ const Post = ({ post, options, expand, viewMode }) => {
                                 setConfirmDeletion(!confirmDeletion)
                               }
                             >
-                              <FontAwesome name="trash" /> Delete
+                              Delete
                             </li>
                             {confirmDeletion && (
                               <DeleteConfirmation
@@ -199,14 +197,14 @@ const Post = ({ post, options, expand, viewMode }) => {
                               />
                             )}
                           </div>
-                        </ButtonGroup>
+                        </ul>
                       ) : (
                         ""
                       )}
                     </span>
                   )}
                 </div>
-                <CommentCountLg>
+                {/* <CommentCountLg>
                   <div>
                     <FontAwesome name="comments" className="comment-icon" />{" "}
                     {post.total_comments} Comments
@@ -217,7 +215,7 @@ const Post = ({ post, options, expand, viewMode }) => {
                     <FontAwesome name="comments" className="comment-icon" />{" "}
                     {post.total_comments}
                   </div>
-                </CommentCountSm>
+                </CommentCountSm> */}
               </PostOptions>
             )}
           </div>
