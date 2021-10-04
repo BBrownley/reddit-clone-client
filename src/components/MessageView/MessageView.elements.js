@@ -43,4 +43,10 @@ export const ReplyForm = styled.div`
       margin-right: 1rem;
     }
   }
+
+  @media (max-width: 600px) {
+    textarea {
+      width: 100%;
+    }
+  }
 `;
