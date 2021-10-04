@@ -45,7 +45,7 @@ const reducer = (state = initialState, action) => {
     case "SUBSCRIBE":
       return [...state, action.group];
     case "UNSUBSCRIBE":
-      return state.filter(group => group.group_id !== action.group.id);
+      return state.filter(group => group.group_id !== action.group.group_id);
     case "CLEAR_SUBSCRIPTIONS":
       return initialState;
     default:
