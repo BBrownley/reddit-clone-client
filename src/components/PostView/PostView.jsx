@@ -32,7 +32,15 @@ const PostView = () => {
     if (user.token !== null) initUser();
 
     postService.getPostById(match.params.id).then(data => {
-      setPost(data);
+      // data.group_name, data.post_id must match route params otherwise route is invalid
+
+      if (
+        data.group_name.toLowerCase() === match.params.group.toLowerCase() &&
+        Number(data.post_id) === Number(match.params.id)
+      ) {
+        setPost(data);
+      }
+
       setLoading(false);
     });
   }, [dispatch]);

@@ -69,6 +69,7 @@ export default function SingleGroupView() {
   useEffect(() => {
     const fetchGroup = async () => {
       const group = await groupService.getGroupByName(match.params.groupName);
+      console.log(group);
       if (group) {
         setGroup(group);
         setLoading(false);
@@ -117,7 +118,9 @@ export default function SingleGroupView() {
   return (
     <div>
       {(() => {
-        if (!loading) {
+        if (badRequest) {
+          return <NotFound></NotFound>;
+        } else if (!loading) {
           return (
             <>
               {!!group && <GroupInfo group={group} />}
@@ -166,8 +169,6 @@ export default function SingleGroupView() {
               )}
             </>
           );
-        } else if (badRequest) {
-          return <NotFound></NotFound>;
         } else {
           return <LoadingMessage />;
         }

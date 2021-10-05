@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import DeleteConfirmation from "../DeleteConfirmation/DeleteConfirmation";
 
@@ -29,7 +29,11 @@ import {
 } from "../PostList/PostList.elements";
 
 import { FormContainer, FormField } from "../shared/Form.elements";
-import { StyledFormContainer } from "./Post.elements";
+import {
+  StyledFormContainer,
+  CommentCountSm,
+  CommentCountLg
+} from "./Post.elements";
 import ButtonGroup from "../shared/ButtonGroup.elements";
 import FollowButton from "../FollowButton/FollowButton";
 
@@ -53,6 +57,8 @@ const Post = ({ post, options, expand, viewMode }) => {
   const [editing, setEditing] = useState(false);
   const [editValue, setEditValue] = useState(post.post_body);
   const [postContent, setPostContent] = useState(post.post_body);
+
+  const singlePostMatch = useRouteMatch("/groups/:groupName/:postId");
 
   const handleVotePost = async (postId, clickedValue) => {
     if (user.token === null) {
@@ -204,18 +210,22 @@ const Post = ({ post, options, expand, viewMode }) => {
                     </span>
                   )}
                 </div>
-                {/* <CommentCountLg>
-                  <div>
-                    <FontAwesome name="comments" className="comment-icon" />{" "}
-                    {post.total_comments} Comments
-                  </div>
-                </CommentCountLg>
-                <CommentCountSm>
-                  <div>
-                    <FontAwesome name="comments" className="comment-icon" />{" "}
-                    {post.total_comments}
-                  </div>
-                </CommentCountSm> */}
+                {!singlePostMatch && (
+                  <>
+                    <CommentCountLg>
+                      <div>
+                        <FontAwesome name="comments" className="comment-icon" />{" "}
+                        {post.total_comments} Comments
+                      </div>
+                    </CommentCountLg>
+                    <CommentCountSm>
+                      <div>
+                        <FontAwesome name="comments" className="comment-icon" />{" "}
+                        {post.total_comments}
+                      </div>
+                    </CommentCountSm>
+                  </>
+                )}
               </PostOptions>
             )}
           </div>
