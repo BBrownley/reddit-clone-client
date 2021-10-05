@@ -17,7 +17,7 @@ import {
   ReplyForm
 } from "./MessageView.elements";
 
-import { Button } from "../shared/Button.elements";
+import { StyledPillButton as PillButton } from "./MessageView.elements";
 
 import ButtonGroup from "../shared/ButtonGroup.elements";
 
@@ -57,13 +57,15 @@ export default function MessageView() {
         </Time>
       </div>
       <MessageBody className="message-body">{location.state.body}</MessageBody>
-      <ButtonGroup>
+      <ul className="message-actions">
         <li>
-          <Link to="/inbox">Back</Link>
+          <Link to="/inbox">
+            <PillButton>Back</PillButton>
+          </Link>
         </li>
         {location.state.sender ? (
           <li>
-            <span onClick={() => setReplyOpen(true)}>Reply</span>
+            <PillButton onClick={() => setReplyOpen(true)}>Reply</PillButton>
           </li>
         ) : (
           ""
@@ -71,7 +73,9 @@ export default function MessageView() {
 
         <div className="pos-rel">
           <li>
-            <span onClick={() => setConfirmDeletion(true)}>Delete</span>
+            <PillButton onClick={() => setConfirmDeletion(true)}>
+              Delete
+            </PillButton>
           </li>
 
           {confirmDeletion && (
@@ -81,7 +85,7 @@ export default function MessageView() {
             />
           )}
         </div>
-      </ButtonGroup>
+      </ul>
       {replyOpen && (
         <ReplyForm>
           <textarea
@@ -90,12 +94,12 @@ export default function MessageView() {
             onChange={e => setReply(e.target.value)}
           />
           <div className="reply-options">
-            <Button onClick={() => setReplyOpen(false)} color="white">
+            <PillButton onClick={() => setReplyOpen(false)} color="white">
               Cancel
-            </Button>
-            <Button onClick={sendReply} color="blue">
+            </PillButton>
+            <PillButton onClick={sendReply} className="send-btn">
               Send
-            </Button>
+            </PillButton>
           </div>
         </ReplyForm>
       )}

@@ -141,7 +141,7 @@ const GroupList = () => {
         <GroupListHeader>
           <button
             onClick={handleCreateGroupButton}
-            className="create-group-button"
+            className="create-group-button primary"
           >
             {" "}
             <FontAwesome name="users" className="fa-users" />

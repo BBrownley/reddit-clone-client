@@ -106,7 +106,7 @@ const GroupForm = () => {
 
           <h3 className="warning">{formWarning}</h3>
 
-          <button type="submit" form="group-form">
+          <button type="submit" form="group-form" className="primary">
             Create Group
           </button>
         </FormContainer>

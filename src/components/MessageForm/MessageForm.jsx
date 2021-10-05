@@ -88,7 +88,7 @@ export default function MessageForm() {
           ></textarea>
         </FormField>
       </form>
-      <button type="submit" form="message-form">
+      <button type="submit" form="message-form" className="primary">
         Send
       </button>
       <FormWarning />

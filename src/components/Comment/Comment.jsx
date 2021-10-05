@@ -29,6 +29,7 @@ import {
 } from "./Comment.elements";
 
 import ButtonGroup from "../shared/ButtonGroup.elements";
+import { PillButton } from "../shared/PillButton.elements";
 
 export default function Comment(props) {
   const level = props.level || 1;
@@ -165,6 +166,7 @@ export default function Comment(props) {
 
   const handleRemoveComment = async () => {
     setRemoved(true);
+    setEditing(false);
     commentsService.remove(props.comment.comment_id);
   };
 
@@ -273,8 +275,12 @@ export default function Comment(props) {
             />
             <div className="form-bottom">
               <div>
-                <button onClick={() => handleReplyComment()}>Send</button>
-                <button onClick={() => setReplying(false)}>Cancel</button>
+                <PillButton onClick={() => handleReplyComment()} color="blue">
+                  Send
+                </PillButton>
+                <PillButton onClick={() => setReplying(false)}>
+                  Cancel
+                </PillButton>
               </div>
               <span className="warning">{commentFormWarning}</span>
             </div>
@@ -289,10 +295,12 @@ export default function Comment(props) {
             />
             <div className="form-bottom">
               <div>
-                <button onClick={() => handleEditComment()}>
+                <PillButton onClick={() => handleEditComment()} color="blue">
                   Edit comment
-                </button>
-                <button onClick={() => setEditing(false)}>Cancel</button>
+                </PillButton>
+                <PillButton onClick={() => setEditing(false)}>
+                  Cancel
+                </PillButton>
               </div>
               <span className="warning">{commentFormWarning}</span>
             </div>

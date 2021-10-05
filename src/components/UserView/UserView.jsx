@@ -160,7 +160,7 @@ export default function UserView() {
             {(() => {
               if (loggedUserId !== null && matchesLoggedUser === false) {
                 return (
-                  <button onClick={handleSendMessageButton} id="send-message">
+                  <button onClick={handleSendMessageButton} id="send-message" className="primary mt-1">
                     Send message
                   </button>
                 );
