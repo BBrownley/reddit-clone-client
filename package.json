@@ -28,8 +28,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "BASE_URL=https://redditto-api.herokuapp.com react-scripts start",
-    "develop": "BASE_URL=http://localhost:5000 react-scripts start",
+    "start": "REACT_APP_BASE_URL=https://redditto-api.herokuapp.com react-scripts start",
+    "develop": "REACT_APP_BASE_URL=http://localhost:5000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
