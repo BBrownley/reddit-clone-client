@@ -1,10 +1,4 @@
-let baseUrl;
-const production = true;
+require("dotenv").config();
 
-if (production) {
-  baseUrl = "https://redditto-api.herokuapp.com";
-} else {
-  baseUrl = "http://localhost:5000";
-}
-
+const baseUrl = process.env.BASE_URL || "http://localhost:5000";
 export default baseUrl;
