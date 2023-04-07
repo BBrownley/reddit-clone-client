@@ -1,3 +1,5 @@
-const { REACT_APP_BASE_URL } = process.env;
+require("dotenv").config();
 
-export default REACT_APP_BASE_URL || "http://localhost:5000";
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+
+export default backendURL;
