@@ -1,9 +1,11 @@
 require("dotenv").config();
 
-//const backendURL = "http://localhost:5000"; // local backend
+let backendURL;
 
-const backendURL = process.env.REACT_APP_BACKEND_URL;
-
-console.log(backendURL);
+if (process.env.REACT_APP_ENV === "dev") {
+  backendURL = "http://localhost:5000"; // local backend
+} else {
+  backendURL = process.env.REACT_APP_BACKEND_URL; // remote hosted backend
+}
 
 export default backendURL;
