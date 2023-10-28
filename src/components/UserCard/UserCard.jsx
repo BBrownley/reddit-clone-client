@@ -27,8 +27,10 @@ export default function UserCard({ username, handleLogout }) {
         <div>
           <p>
             <strong>
-              Signed in as{" "}
-              <StyledLink to={`/users/${userId}`}>{username}</StyledLink>
+              <span class="signed-in-as">
+                Signed in as{" "}
+                <StyledLink to={`/users/${userId}`}>{username}</StyledLink>
+              </span>
             </strong>
           </p>
           <InboxLink to="/inbox">

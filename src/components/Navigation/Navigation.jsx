@@ -95,7 +95,9 @@ export default function Navigation() {
             return (
               <ul>
                 <li>
-                  <StyledLink to="/login">Log in</StyledLink>
+                  <StyledLink to="/login" className="nav-login">
+                    Log in
+                  </StyledLink>
                 </li>
                 <li>
                   <StyledLink to="/register">Register</StyledLink>

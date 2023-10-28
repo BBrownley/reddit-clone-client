@@ -21,7 +21,7 @@ import {
   unsubscribeFromGroup
 } from "../../reducers/groupSubscribesReducer";
 
-export default function GroupCard({ group }) {
+export default function GroupCard({ group, groupId }) {
   const [groupSubs, setGroupSubs] = useState(null);
 
   const { group_name, blurb } = group;
@@ -51,7 +51,11 @@ export default function GroupCard({ group }) {
     <CardWrapper>
       <Card>
         <div>
-          <NavLink size={"medium"} to={`/groups/${group_name.toLowerCase()}`}>
+          <NavLink
+            size={"medium"}
+            to={`/groups/${group_name.toLowerCase()}`}
+            className={`group-link-${groupId}`}
+          >
             {group_name}
           </NavLink>
           <GroupBlurb>{blurb}</GroupBlurb>

@@ -153,7 +153,13 @@ const GroupList = () => {
         <Container>
           {groupsToDisplay.length !== 0
             ? filterGroups(groupsToDisplay).map((group, index) => {
-                return <GroupCard group={group} key={index} />;
+                return (
+                  <GroupCard
+                    group={group}
+                    key={index}
+                    groupId={index}
+                  />
+                );
               })
             : ""}
         </Container>

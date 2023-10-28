@@ -125,6 +125,7 @@ const PostForm = () => {
               <div>
                 <textarea
                   name="content"
+                  id="content"
                   form="post-form"
                   value={content}
                   onChange={handleSetContent}
@@ -132,7 +133,7 @@ const PostForm = () => {
               </div>
             </FormField>
 
-            <button type="submit" form="post-form" className="primary">
+            <button type="submit" form="post-form" className="primary create-post-btn">
               Create Post
             </button>
           </div>

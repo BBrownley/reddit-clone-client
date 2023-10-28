@@ -102,7 +102,7 @@ const LoginForm = props => {
         .
       </p>
 
-      <button type="submit" form="login-form" className="primary">
+      <button type="submit" form="login-form" className="primary login-btn">
         Login
       </button>
       <FormWarning />
