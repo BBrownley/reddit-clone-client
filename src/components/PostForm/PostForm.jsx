@@ -90,8 +90,7 @@ const PostForm = () => {
         {currentUser.userId === null && (
           <>
             <h2>
-              You must be logged in to create a post.{" "}
-              <StyledLink to="/login">Log in</StyledLink> or{" "}
+              You must be logged in to create a post. <StyledLink to="/login">Log in</StyledLink> or{" "}
               <StyledLink to="/">go to the home page</StyledLink>.
             </h2>
           </>
@@ -110,6 +109,7 @@ const PostForm = () => {
                 id="title"
                 name="title"
                 placeholder="title"
+                data-testid="title"
                 value={title}
                 onChange={handleSetTitle}
               ></input>
@@ -127,13 +127,19 @@ const PostForm = () => {
                   name="content"
                   id="content"
                   form="post-form"
+                  data-testid="content"
                   value={content}
                   onChange={handleSetContent}
                 ></textarea>
               </div>
             </FormField>
 
-            <button type="submit" form="post-form" className="primary create-post-btn">
+            <button
+              type="submit"
+              form="post-form"
+              className="primary create-post-btn"
+              data-testid="create-post-btn"
+            >
               Create Post
             </button>
           </div>

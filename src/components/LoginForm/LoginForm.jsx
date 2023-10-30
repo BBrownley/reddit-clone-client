@@ -73,6 +73,7 @@ const LoginForm = props => {
             type="text"
             id="username"
             name="username"
+            data-testid="username"
             value={username}
             onChange={handleSetUsername}
           ></input>
@@ -83,6 +84,7 @@ const LoginForm = props => {
             type="password"
             id="password"
             name="password"
+            data-testid="password"
             value={password}
             onChange={handleSetPassword}
           ></input>
@@ -102,7 +104,7 @@ const LoginForm = props => {
         .
       </p>
 
-      <button type="submit" form="login-form" className="primary login-btn">
+      <button type="submit" form="login-form" className="primary login-btn" data-testid="login-btn">
         Login
       </button>
       <FormWarning />

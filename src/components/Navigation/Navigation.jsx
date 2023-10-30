@@ -82,7 +82,7 @@ export default function Navigation() {
         </StyledLink>
 
         <h2>
-          <StyledLink to="/groups" className="groups-link">
+          <StyledLink to="/groups" className="groups-link" data-testid="groups-link">
             Groups
           </StyledLink>
         </h2>
@@ -95,7 +95,11 @@ export default function Navigation() {
             return (
               <ul>
                 <li>
-                  <StyledLink to="/login" className="nav-login">
+                  <StyledLink
+                    to="/login"
+                    className="nav-login"
+                    data-testid="nav-login"
+                  >
                     Log in
                   </StyledLink>
                 </li>

@@ -3,16 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import FontAwesome from "react-fontawesome";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
-import {
-  subscribeToGroup,
-  unsubscribeFromGroup
-} from "../../reducers/groupSubscribesReducer";
+import { subscribeToGroup, unsubscribeFromGroup } from "../../reducers/groupSubscribesReducer";
 import { setRedirectPath } from "../../reducers/redirectReducer";
 
-import {
-  GroupActions as Container,
-  CreatePostButton
-} from "./GroupActions.elements";
+import { GroupActions as Container, CreatePostButton } from "./GroupActions.elements";
 
 const GroupActions = ({ group }) => {
   const history = useHistory();
@@ -58,6 +52,7 @@ const GroupActions = ({ group }) => {
       <button
         onClick={handleCreatePostButton}
         className="create-post-button primary"
+        data-testid="create-post-button"
       >
         <FontAwesome name="paper-plane"></FontAwesome> Submit a new post
       </button>

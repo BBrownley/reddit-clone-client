@@ -55,6 +55,7 @@ export default function GroupCard({ group, groupId }) {
             size={"medium"}
             to={`/groups/${group_name.toLowerCase()}`}
             className={`group-link-${groupId}`}
+            data-testid={`group-link-${groupId}`}
           >
             {group_name}
           </NavLink>
