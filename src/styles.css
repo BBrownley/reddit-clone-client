@@ -13,6 +13,10 @@ body {
   background-color: #333;
 }
 
+body > iframe[style*="2147483647"] {
+  display: none;
+}
+
 body,
 h1,
 h2,
@@ -65,11 +69,7 @@ button.primary {
   -webkit-box-shadow: 3px 3px 15px 1px rgba(112, 144, 176, 0.25);
   box-shadow: 3px 3px 15px 1px rgba(112, 144, 176, 0.25);
   background-color: #4385f5;
-  background-image: linear-gradient(
-    to right,
-    rgba(58, 168, 219, 0.35),
-    rgba(76, 139, 245, 0.35)
-  );
+  background-image: linear-gradient(to right, rgba(58, 168, 219, 0.35), rgba(76, 139, 245, 0.35));
   color: white;
   transition: 0.2s background-color ease-out;
 }

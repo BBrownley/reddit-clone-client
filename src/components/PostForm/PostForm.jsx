@@ -61,7 +61,7 @@ const PostForm = () => {
     e.preventDefault();
     const data = { title, group_id: groupId, content };
 
-    const newPost = await postService.createPost(data);
+    const newPost = await postService.createPost(data); 
 
     if (newPost) {
       dispatch(initializePostVotes());
