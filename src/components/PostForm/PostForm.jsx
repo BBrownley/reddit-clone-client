@@ -36,7 +36,7 @@ const PostForm = () => {
   useEffect(() => {
     groupService.verifyGroupByName(currentGroup).then(result => {
       if (!result) {
-        console.log("This group does not exist");
+        // console.log("This group does not exist");
       } else {
         setGroupName(currentGroup);
         setGroupId(result);
@@ -63,7 +63,6 @@ const PostForm = () => {
 
     // TODO - check for blank inputs, update notification state in redux
     if (title.trim().length === 0 || content.trim().length === 0) {
-      console.log("empty field somewhere");
       dispatch(setNotification("All fields must be filled in"));
       return;
     }

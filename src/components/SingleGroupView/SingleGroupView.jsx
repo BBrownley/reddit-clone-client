@@ -69,7 +69,6 @@ export default function SingleGroupView() {
   useEffect(() => {
     const fetchGroup = async () => {
       const group = await groupService.getGroupByName(match.params.groupName);
-      console.log(group);
       if (group) {
         setGroup(group);
         setLoading(false);

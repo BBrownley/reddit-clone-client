@@ -223,7 +223,6 @@ export default function UserView() {
               {(() => {
                 return historyToDisplay.map((item, index) => {
                   if (item.comment_body === null) {
-                    console.log(item);
                     return <Post post={item} options={false} key={index} />;
                   } else {
                     return (

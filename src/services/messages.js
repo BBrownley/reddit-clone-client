@@ -53,7 +53,7 @@ const sendAll = async (message, postId) => {
       config
     );
   } catch (exception) {
-    console.log(exception);
+    // console.log(exception);
   }
 };
 

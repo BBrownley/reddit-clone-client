@@ -34,6 +34,13 @@ const PostView = () => {
     postService.getPostById(match.params.id).then(data => {
       // data.group_name, data.post_id must match route params otherwise route is invalid
 
+      const postDoesNotExist = !data.post_id; // probably an invalid URL
+
+      if (postDoesNotExist) {
+        setLoading(false);
+        return;
+      }
+
       if (
         data.group_name.toLowerCase() === match.params.group.toLowerCase() &&
         Number(data.post_id) === Number(match.params.id)
@@ -52,11 +59,7 @@ const PostView = () => {
       {post && (
         <div>
           <Post post={post} key={post.postID} expand={true} viewMode={true} />
-          <Comments
-            postId={post.post_id}
-            submitterId={post.submitter_id}
-            postTitle={post.title}
-          />
+          <Comments postId={post.post_id} submitterId={post.submitter_id} postTitle={post.title} />
         </div>
       )}
     </>
