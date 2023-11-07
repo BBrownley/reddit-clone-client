@@ -29,6 +29,9 @@ const Container = styled.div`
     width: 3rem;
     text-align: center;
   }
+  h2 {
+    margin-bottom: 2rem;
+  }
 `;
 
 export default function HomePage() {
@@ -111,41 +114,33 @@ export default function HomePage() {
       <Container>
         {maxPages === 0 && (
           <h2>
-            Subscribe to your favorite <Link to="/groups">groups</Link> to stay
-            up to date with the content you love ❤️
+            Subscribe to your favorite <Link to="/groups">groups</Link> to stay up to date with the
+            content you love ❤️
+          </h2>
+        )}
+        {maxPages !== 0 && (
+          <h2>
+            Here are the latest posts from <Link to="/groups">groups</Link> you've subscribed to:
           </h2>
         )}
         {loading && <LoadingMessage />}
-        {!loading && (
-          <PostList searchBy="title" searchTerm="" posts={postsToDisplay} />
-        )}
+        {!loading && <PostList searchBy="title" searchTerm="" posts={postsToDisplay} />}
         {maxPages !== 0 && (
           <>
             {currentPage > 1 && (
-              <button
-                className="primary pagination-button previous"
-                onClick={handlePrevButton}
-              >
+              <button className="primary pagination-button previous" onClick={handlePrevButton}>
                 Previous
               </button>
             )}
 
             {!loading && (
               <span>
-                Page{" "}
-                <input
-                  type="text"
-                  value={pageInput}
-                  onChange={handlePageInput}
-                />{" "}
-                of {maxPages}
+                Page <input type="text" value={pageInput} onChange={handlePageInput} /> of{" "}
+                {maxPages}
               </span>
             )}
             {currentPage < maxPages && (
-              <button
-                className="primary pagination-button next"
-                onClick={handleNextButton}
-              >
+              <button className="primary pagination-button next" onClick={handleNextButton}>
                 Next
               </button>
             )}
