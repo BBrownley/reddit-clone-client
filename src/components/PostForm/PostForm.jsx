@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { initializeVotes as initializePostVotes } from "../../reducers/userPostVotesReducer";
 import { initializePosts } from "../../reducers/postsReducer";
-import { removeNotification } from "../../reducers/notificationReducer";
+import { removeNotification, setNotification } from "../../reducers/notificationReducer";
 import { addUserPost } from "../../reducers/userPostsReducer";
 import { timedToast } from "../../reducers/toastReducer";
 
@@ -61,7 +61,14 @@ const PostForm = () => {
     e.preventDefault();
     const data = { title, group_id: groupId, content };
 
-    const newPost = await postService.createPost(data); 
+    // TODO - check for blank inputs, update notification state in redux
+    if (title.trim().length === 0 || content.trim().length === 0) {
+      console.log("empty field somewhere");
+      dispatch(setNotification("All fields must be filled in"));
+      return;
+    }
+
+    const newPost = await postService.createPost(data);
 
     if (newPost) {
       dispatch(initializePostVotes());
@@ -114,10 +121,6 @@ const PostForm = () => {
                 onChange={handleSetTitle}
               ></input>
             </FormField>
-            {/* <FormField>
-              <label htmlFor="group">Group: </label>
-              <Select value={groupQuery} onChange={handleSetGroupQuery} />
-            </FormField> */}
           </form>
           <div>
             <FormField>
