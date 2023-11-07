@@ -118,7 +118,7 @@ export default function HomePage() {
             content you love ❤️
           </h2>
         )}
-        {maxPages !== 0 && (
+        {maxPages !== 0 && user.userId !== null && (
           <h2>
             Here are the latest posts from <Link to="/groups">groups</Link> you've subscribed to:
           </h2>
