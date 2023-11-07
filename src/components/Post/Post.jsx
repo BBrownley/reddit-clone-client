@@ -10,11 +10,7 @@ import {
   removeVote,
   switchVote
 } from "../../reducers/userPostVotesReducer";
-import {
-  initializePosts,
-  removePost,
-  editPost
-} from "../../reducers/postsReducer";
+import { initializePosts, removePost, editPost } from "../../reducers/postsReducer";
 
 import postService from "../../services/posts";
 import userPostVotesService from "../../services/userPostVotes";
@@ -29,11 +25,7 @@ import {
 } from "../PostList/PostList.elements";
 
 import { FormContainer, FormField } from "../shared/Form.elements";
-import {
-  StyledFormContainer,
-  CommentCountSm,
-  CommentCountLg
-} from "./Post.elements";
+import { StyledFormContainer, CommentCountSm, CommentCountLg } from "./Post.elements";
 import ButtonGroup from "../shared/ButtonGroup.elements";
 import FollowButton from "../FollowButton/FollowButton";
 
@@ -104,7 +96,9 @@ const Post = ({ post, options, expand, viewMode }) => {
   const handleDeletePost = async postId => {
     dispatch(removePost(postId));
     if (viewMode) {
-      history.push("/");
+      // grab the current group from URL, redirect them back to the group page
+      const currentGroup = window.location.href.split("/").slice(-2)[0];
+      history.push(`/groups/${currentGroup}`);
     }
   };
 
@@ -139,9 +133,7 @@ const Post = ({ post, options, expand, viewMode }) => {
 
           <div style={{ flex: 1 }}>
             <PostHeader
-              postLink={`/groups/${post.group_name.toLowerCase()}/${
-                post.post_id
-              }`}
+              postLink={`/groups/${post.group_name.toLowerCase()}/${post.post_id}`}
               title={post.title}
               postAge={moment(post.created_at).fromNow()}
               groupLink={`/groups/${post.group_name.toLowerCase()}`}
@@ -153,10 +145,7 @@ const Post = ({ post, options, expand, viewMode }) => {
             {editing ? (
               <StyledFormContainer>
                 <FormField>
-                  <textarea
-                    value={editValue}
-                    onChange={e => setEditValue(e.target.value)}
-                  />
+                  <textarea value={editValue} onChange={e => setEditValue(e.target.value)} />
                 </FormField>
                 <ButtonGroup>
                   <li onClick={handleEditPost} className="active">
@@ -172,12 +161,7 @@ const Post = ({ post, options, expand, viewMode }) => {
             {options !== false && (
               <PostOptions>
                 <div>
-                  {user.token && (
-                    <FollowButton
-                      followers={post.follows}
-                      postId={post.post_id}
-                    />
-                  )}
+                  {user.token && <FollowButton followers={post.follows} postId={post.post_id} />}
                   {user && (
                     <span>
                       {userOwnsPost && viewMode ? (
@@ -187,18 +171,10 @@ const Post = ({ post, options, expand, viewMode }) => {
                           )}
 
                           <div className="pos-rel">
-                            <li
-                              onClick={() =>
-                                setConfirmDeletion(!confirmDeletion)
-                              }
-                            >
-                              Delete
-                            </li>
+                            <li onClick={() => setConfirmDeletion(!confirmDeletion)}>Delete</li>
                             {confirmDeletion && (
                               <DeleteConfirmation
-                                confirmDelete={() =>
-                                  handleDeletePost(post.post_id)
-                                }
+                                confirmDelete={() => handleDeletePost(post.post_id)}
                                 cancel={() => setConfirmDeletion(false)}
                               />
                             )}
